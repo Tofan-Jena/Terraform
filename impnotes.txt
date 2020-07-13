@@ -1,0 +1,32 @@
+# How to get the plan out in to Json file
+
+Terraform plan -out=.\plan.Json
+
+It will save the plan output in to plan.json file.
+
+# How to review the plan output file
+
+  Terraform Show plan.json
+
+#
+
+# How to use out file to apply 
+
+   terraform apply ".\\plan.json"
+  ###########################################
+
+  use of OUTPUT Syntax
+
+  See the Output.tf ..----> Example :- 
+    
+
+  output "ResourceGroupNAmeOf-C1" {
+    value = azurerm_resource_group.C1RG.name
+    }
+
+    Output frendly name = ResourceGroupNAmeOf-C1
+    Value = What you need , Like IP,Hostname,Kind,Location
+#
+
+
+

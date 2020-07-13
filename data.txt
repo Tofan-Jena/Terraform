@@ -1,0 +1,16 @@
+############ HOW TO WORK EITH EXTING RESOURCE###################
+
+# we are calling secret value and passing in to password param ##
+data "azurerm_key_vault" "key_vault" {
+  name = "tfkeyvaulttof"
+  resource_group_name = "TFSTATE"
+  provider = azurerm.Customer1
+}
+
+data "azurerm_key_vault_secret" "adminpswd" {
+  name = "admin-pswd"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+  provider = azurerm.Customer1
+}
+
+
