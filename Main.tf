@@ -4,6 +4,24 @@ provider "azurerm" {
   version = "2.2.0"
   features {}
 }
+
+
+//Call modules
+
+module "Alias-providers" {
+  source              = "./Module\alias-Providers"
+  
+  client_id       = var.client_id_C1
+  client_secret   = var.client_secret_C1
+  tenant_id       = var.tenant_id_C1
+  subscription_id = var.subscription_id_C1
+  
+}
+
+
+
+
+
 ##### RESOURCE CREATION START FROM HERE #####
 
 locals {
