@@ -21,6 +21,13 @@ module "Alias-providers" {
   subscription_id_C2  = var.subscription_id_C2
 }
 
+module "AvailabilitySet" {
+  source = "./Module/AvailabilitySet"
+  name = "${var.prefix}-${var.env}-as"
+  
+
+
+}
 
 
 
