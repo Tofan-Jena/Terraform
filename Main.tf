@@ -9,13 +9,16 @@ provider "azurerm" {
 //Call modules
 
 module "Alias-providers" {
-  source              = "./Module\alias-Providers"
-  
-  client_id       = var.client_id_C1
-  client_secret   = var.client_secret_C1
-  tenant_id       = var.tenant_id_C1
-  subscription_id = var.subscription_id_C1
-  
+  source              = "./Module/alias-Providers"
+  client_id_C1        = var.client_id_C1
+  client_secret_C1    = var.client_secret_C1
+  tenant_id_C1        = var.tenant_id_C1
+  subscription_id_C1  = var.subscription_id_C1
+
+  client_id_C2        = var.client_id_C2
+  client_secret_C2    = var.client_secret_C2
+  tenant_id_C2        = var.tenant_id_C2
+  subscription_id_C2  = var.subscription_id_C2
 }
 
 
