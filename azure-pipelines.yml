@@ -1,0 +1,50 @@
+trigger: none
+pool:
+  name: Infra
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '.\'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publishing Artifact'
+  inputs:
+    ArtifactName: 'Terraform-src'
+
+- task: qetza.replacetokens.replacetokens-task.replacetokens@4
+  displayName: 'Replace Variable'
+  inputs:
+    rootDirectory: '$(System.DefaultWorkingDirectory)/_Terraform-Classic-CI/Terraform-src'
+    targetFiles: terraform.tfvars
+    tokenPattern: custom
+    tokenPrefix: '#'
+    tokenSuffix: '#'
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform init'
+  inputs:
+    TemplatePath: '$(System.DefaultWorkingDirectory)/_Terraform-Classic-CI/Terraform-src'
+    Arguments: init
+    InstallTerraform: true
+    UseAzureSub: true
+    ConnectedServiceNameARM: 'Microsoft Azure (67006b24-52bb-4f1c-b621-905523fa2156)'
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform plan'
+  inputs:
+    TemplatePath: '$(System.DefaultWorkingDirectory)/_Terraform-Classic-CI/Terraform-src'
+    Arguments: plan
+    InstallTerraform: true
+    UseAzureSub: true
+    ConnectedServiceNameARM: 'Microsoft Azure (67006b24-52bb-4f1c-b621-905523fa2156)'
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform apply'
+  inputs:
+    TemplatePath: '$(System.DefaultWorkingDirectory)/_Terraform-Classic-CI/Terraform-src'
+    Arguments: 'apply -auto-approve -var-file=terraform.tfvars'
+    InstallTerraform: true
+    UseAzureSub: true
+    ConnectedServiceNameARM: 'Microsoft Azure (67006b24-52bb-4f1c-b621-905523fa2156)'
