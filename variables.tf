@@ -1,6 +1,4 @@
-variable "location" {
-  type = string
-}
+
 variable "rgname" {
   type = string
 }
@@ -44,9 +42,9 @@ variable "client_secret" {
 }
 
 
-## Common-Prefix
-  variable "prefix" {}
-  ## Enviorment
+/* Common-Prefix
+ variable "prefix" {}
+*/ ## Enviorment
 variable "env" {}
 ## Count for Multiple resource 
 variable "counts" {}
@@ -91,11 +89,5 @@ variable "pswd" {}
   variable "customer"{
       type = map
   }
-  
-## Tag
-
-variable "tag" {
-type = map
-}
 
 

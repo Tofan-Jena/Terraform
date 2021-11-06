@@ -2,7 +2,7 @@ rgname                     = "myapprg"
 environement               = "uat"
 prefix                     = "myapp"
 adminpassword              = "Admin@12345"
-location                   = "west europe"
+// location                   = "west europe"
 myapp_rg              = "web-rg"
 myapp_location        = "West Europe"
 resource_prefix            = "web-server"
@@ -27,7 +27,7 @@ tag                                 = {
 }
 
 
-prefix = "idf"
+// prefix = "idf"
 env = "prod"
 counts = "2"
 pswd = "Admin@12345"
@@ -66,11 +66,7 @@ subnet-c2 = {
         AzureBastionSubnet = "10.0.2.16/28"
         GatewaySubnet = "10.0.2.32/28"
 }
-tag = {
-    env = "prod"
-    owner = "tofan"
-    cost = "CoE"
-}
+
 prefix-sa = "sa"
 prefix-vm = "vm"
 prefix-vnet = "vnet"
